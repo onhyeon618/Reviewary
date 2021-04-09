@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/noimagefound"
+            android:scaleType="fitCenter"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true"
+            android:background="#dddddd"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="2.5"
+                android:text="제목"
+                android:gravity="center_vertical"/>
+
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="7.5"
+                android:gravity="center_vertical"
+                android:background="@null"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true"
+            android:background="#dddddd"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvDirector"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="2.5"
+                android:text="감독"
+                android:gravity="center_vertical"/>
+
+            <EditText
+                android:id="@+id/etDirector"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="7.5"
+                android:gravity="center_vertical"
+                android:background="@null"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true"
+            android:background="#dddddd"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvActor"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="2.5"
+                android:text="출연진"
+                android:gravity="center_vertical"/>
+
+            <EditText
+                android:id="@+id/etActor"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="7.5"
+                android:gravity="center_vertical"
+                android:background="@null"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true"
+            android:background="#dddddd"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvGenre"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="2.5"
+                android:text="장르"
+                android:gravity="center_vertical"/>
+
+            <Spinner
+                android:id="@+id/spGenre"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="7.5"
+                android:gravity="center_vertical"
+                android:textColor="#000000"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true"
+            android:background="#dddddd"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvRating"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="2.5"
+                android:text="평점"
+                android:gravity="center_vertical"/>
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="6.5"
+                android:gravity="center_vertical"
+                style="?android:attr/ratingBarStyle"
+                android:isIndicator="false"
+                android:numStars="5"
+                android:rating="0"
+                android:stepSize="0.5"
+                android:max="5"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/tvRatingNum"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="0.0"
+                android:gravity="center_vertical|right"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true"
+            android:background="#dddddd"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="2.5"
+                android:text="관람일"
+                android:gravity="center_vertical"/>
+
+            <EditText
+                android:id="@+id/etDate"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="7.5"
+                android:gravity="center_vertical"
+                android:background="@null"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true"
+            android:background="#dddddd"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvPlace"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="2.5"
+                android:text="관람 장소"
+                android:gravity="center_vertical"/>
+
+            <EditText
+                android:id="@+id/etPlace"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="7.5"
+                android:gravity="center_vertical"
+                android:background="@null"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true"
+            android:background="#dddddd"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvImpressive"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="2.5"
+                android:text="인상깊은 대사"
+                android:gravity="center_vertical"
+                />
+
+            <EditText
+                android:id="@+id/etImpressive"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="7.5"
+                android:gravity="center_vertical"
+                android:background="@null"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true"
+            android:background="#dddddd"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvReview"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="2.5"
+                android:text="감상평"
+                android:gravity="center_vertical"/>
+
+            <EditText
+                android:id="@+id/etReview"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="7.5"
+                android:gravity="center_vertical"
+                android:inputType="textMultiLine"
+                android:lines="8"
+                android:scrollbars="vertical"
+                android:background="@null"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true"
+            android:background="#dddddd"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="20dp" >
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="저장"/>
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="삭제"/>
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="취소"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
