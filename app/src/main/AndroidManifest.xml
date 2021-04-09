@@ -4,10 +4,12 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera2" />
 
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="true" />
+    <!-- @2019 프로젝트: 팀장 오나현(onhyeon618@gmail.com); 팀원 류수빈(subin7906@gmail.com)-->
+    <!-- @2020 코드 수정 진행: 오나현(onhyeon618@gmail.com) -->
 
     <application
         android:allowBackup="true"
@@ -33,21 +35,19 @@
         <activity
             android:name=".NewItemActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--<activity-->
-            <!--android:name=".DailyActivity"-->
-            <!--android:theme="@style/Theme.AppCompat.Light.Dialog.Alert"-->
-            <!--android:windowSoftInputMode="stateAlwaysHidden" />-->
+
         <activity
             android:name=".ViewItemActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
+
         <activity
             android:name=".InquiryActivity"
             android:theme="@style/Theme.AppCompat.Light.Dialog"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
         <provider
-            android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.cookandroid.reviewary.fileprovider"
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.reviewary_renew"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

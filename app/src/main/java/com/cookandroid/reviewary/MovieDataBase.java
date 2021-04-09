@@ -29,7 +29,7 @@ public class MovieDataBase {
     /**
      * Helper class defined
      */
-    private MovieDataBase.DatabaseHelper dbHelper;
+    private DatabaseHelper dbHelper;
 
     /**
      * SQLiteDatabase 인스턴스
@@ -65,7 +65,7 @@ public class MovieDataBase {
     public boolean open() {
         println("opening database [" + AppConstants.MOVIEDATABASE_NAME + "].");
 
-        dbHelper = new MovieDataBase.DatabaseHelper(context);
+        dbHelper = new DatabaseHelper(context);
         db = dbHelper.getWritableDatabase();
 
         return true;
@@ -79,6 +79,17 @@ public class MovieDataBase {
         db.close();
 
         database = null;
+    }
+
+    /**
+     * 데이터베이스 삭제
+     */
+    public boolean delete() {
+        println("deleting database [" + AppConstants.MOVIEDATABASE_NAME + "].");
+
+        context.deleteDatabase(AppConstants.MOVIEDATABASE_NAME);
+
+        return true;
     }
 
     /**

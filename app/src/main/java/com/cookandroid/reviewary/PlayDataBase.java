@@ -29,7 +29,7 @@ public class PlayDataBase {
     /**
      * Helper class defined
      */
-    private PlayDataBase.DatabaseHelper dbHelper;
+    private DatabaseHelper dbHelper;
 
     /**
      * SQLiteDatabase 인스턴스
@@ -65,7 +65,7 @@ public class PlayDataBase {
     public boolean open() {
         println("opening database [" + AppConstants.PLAYDATABASE_NAME + "].");
 
-        dbHelper = new PlayDataBase.DatabaseHelper(context);
+        dbHelper = new DatabaseHelper(context);
         db = dbHelper.getWritableDatabase();
 
         return true;
@@ -79,6 +79,17 @@ public class PlayDataBase {
         db.close();
 
         database = null;
+    }
+
+    /**
+     * 데이터베이스 삭제
+     */
+    public boolean delete() {
+        println("deleting database [" + AppConstants.PLAYDATABASE_NAME + "].");
+
+        context.deleteDatabase(AppConstants.PLAYDATABASE_NAME);
+
+        return true;
     }
 
     /**

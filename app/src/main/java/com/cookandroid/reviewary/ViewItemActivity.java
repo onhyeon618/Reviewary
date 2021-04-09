@@ -2,16 +2,16 @@ package com.cookandroid.reviewary;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
+import androidx.appcompat.widget.Toolbar;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.cookandroid.reviewary.R;
 
 public class ViewItemActivity extends AppCompatActivity {
 
@@ -25,6 +25,8 @@ public class ViewItemActivity extends AppCompatActivity {
 
     int ContentId;
     int Category;
+
+    boolean isContextChanged = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,22 +67,27 @@ public class ViewItemActivity extends AppCompatActivity {
 
     private void showEndMsg()
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        //builder.setTitle(null);
-        builder.setMessage("작성하던 리뷰가 삭제됩니다. 작성을 취소하시겠습니까?");
+        if(isContextChanged) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            //builder.setTitle(null);
+            builder.setMessage("작성하던 리뷰가 삭제됩니다. 작성을 취소하시겠습니까?");
 
-        builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                finish();
-            }
-        });
-        builder.setNegativeButton("취소", null);
+            builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    finish();
+                }
+            });
+            builder.setNegativeButton("취소", null);
 
-        builder.setCancelable(true);
+            builder.setCancelable(true);
 
-        AlertDialog dialog = builder.create();
-        dialog.show();
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+        else {
+            finish();
+        }
     }
 
     @Override

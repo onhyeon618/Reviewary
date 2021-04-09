@@ -1,10 +1,14 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+// @2019 프로젝트: 팀장 오나현(onhyeon618@gmail.com); 팀원 류수빈(subin7906@gmail.com)
+// @2020 코드 수정 진행: 오나현(onhyeon618@gmail.com)
+
 buildscript {
     
     repositories {
         google()
         jcenter()
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.0'

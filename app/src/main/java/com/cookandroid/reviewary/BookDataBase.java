@@ -82,6 +82,17 @@ public class BookDataBase {
     }
 
     /**
+     * 데이터베이스 삭제
+     */
+    public boolean delete() {
+        println("deleting database [" + AppConstants.BOOKDATABASE_NAME + "].");
+
+        context.deleteDatabase(AppConstants.BOOKDATABASE_NAME);
+
+        return true;
+    }
+
+    /**
      * execute raw query using the input SQL
      * close the cursor after fetching any result
      *

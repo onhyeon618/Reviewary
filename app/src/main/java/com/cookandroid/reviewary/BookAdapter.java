@@ -1,8 +1,6 @@
 package com.cookandroid.reviewary;
 
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +8,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.cookandroid.reviewary.R;
 
 import java.util.ArrayList;
 
@@ -63,6 +66,13 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> im
         }
     }
 
+    @Override
+    public void onItemLongClick(ViewHolder holder, View view, int position) {
+        if (listener != null) {
+            listener.onItemLongClick(holder, view, position);
+        }
+    }
+
     static class ViewHolder extends RecyclerView.ViewHolder {
         LinearLayout outerLayout;
 
@@ -94,6 +104,18 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> im
                     }
                 }
             });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    int position = getAdapterPosition();
+
+                    if(listener != null) {
+                        listener.onItemLongClick(ViewHolder.this, view, position);
+                    }
+                    return true;
+                }
+            });
         }
 
         public void setItem(Book item) {
@@ -118,7 +140,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> im
         }
 
         public void setRatingBar(String ratedPoint) {
-            ratingBar.setRating(Float.parseFloat("4.0"));
+            ratingBar.setRating(Float.parseFloat(ratedPoint));
             ratingBar.setIsIndicator(true);
         }
     }

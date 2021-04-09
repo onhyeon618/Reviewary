@@ -2,16 +2,20 @@ package com.cookandroid.reviewary;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
+import com.cookandroid.reviewary.R;
+import com.google.android.material.tabs.TabLayout;
 
 public class NewItemActivity extends AppCompatActivity {
 
@@ -25,12 +29,15 @@ public class NewItemActivity extends AppCompatActivity {
 
     String SelectedDate;
 
+    boolean isContextChanged = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_item);
 
         Intent intent = getIntent();
+        int selectedNavi =intent.getIntExtra("currentNavi", 0);
         SelectedDate = intent.getStringExtra("SelectedDate");
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -53,6 +60,26 @@ public class NewItemActivity extends AppCompatActivity {
         tabs.addTab(tabs.newTab().setText("도서"));
         tabs.addTab(tabs.newTab().setText("영화"));
         tabs.addTab(tabs.newTab().setText("연극뮤지컬"));
+
+        switch(selectedNavi) {
+            case 0:
+            case 1:
+                tabs.getTabAt(0).select();
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, bookFragment).commit();
+                titleText.setText("도서");
+                break;
+            case 2:
+                tabs.getTabAt(1).select();
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, movieFragment).commit();
+                titleText.setText("영화");
+                break;
+            case 3:
+                tabs.getTabAt(2).select();
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, playFragment).commit();
+                titleText.setText("연극뮤지컬");
+                break;
+        }
+
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -87,22 +114,27 @@ public class NewItemActivity extends AppCompatActivity {
 
     private void showEndMsg()
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        //builder.setTitle(null);
-        builder.setMessage("작성하던 리뷰가 삭제됩니다. 작성을 취소하시겠습니까?");
+        if(isContextChanged) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            //builder.setTitle(null);
+            builder.setMessage("작성하던 리뷰가 삭제됩니다. 작성을 취소하시겠습니까?");
 
-        builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                finish();
-            }
-        });
-        builder.setNegativeButton("취소", null);
+            builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    finish();
+                }
+            });
+            builder.setNegativeButton("취소", null);
 
-        builder.setCancelable(true);
+            builder.setCancelable(true);
 
-        AlertDialog dialog = builder.create();
-        dialog.show();
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+        else {
+            finish();
+        }
     }
 
     @Override

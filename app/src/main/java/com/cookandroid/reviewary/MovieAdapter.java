@@ -1,8 +1,6 @@
 package com.cookandroid.reviewary;
 
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +8,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.cookandroid.reviewary.R;
 
 import java.util.ArrayList;
 
@@ -27,7 +30,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         View itemView = inflater.inflate(R.layout.single_item, viewGroup, false);
 
-        return new MovieAdapter.ViewHolder(itemView, this, layoutType);
+        return new ViewHolder(itemView, this, layoutType);
     }
 
     @Override
@@ -58,9 +61,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     }
 
     @Override
-    public void onItemClick(MovieAdapter.ViewHolder holder, View view, int position) {
+    public void onItemClick(ViewHolder holder, View view, int position) {
         if (listener != null) {
             listener.onItemClick(holder, view, position);
+        }
+    }
+
+    @Override
+    public void onItemLongClick(ViewHolder holder, View view, int position) {
+        if (listener != null) {
+            listener.onItemLongClick(holder, view, position);
         }
     }
 
@@ -91,8 +101,20 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                     int position = getAdapterPosition();
 
                     if (listener != null) {
-                        listener.onItemClick(MovieAdapter.ViewHolder.this, view, position);
+                        listener.onItemClick(ViewHolder.this, view, position);
                     }
+                }
+            });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    int position = getAdapterPosition();
+
+                    if(listener != null) {
+                        listener.onItemLongClick(ViewHolder.this, view, position);
+                    }
+                    return true;
                 }
             });
         }
@@ -119,7 +141,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         }
 
         public void setRatingBar(String ratedPoint) {
-            ratingBar.setRating(Float.parseFloat("4.0"));
+            ratingBar.setRating(Float.parseFloat(ratedPoint));
             ratingBar.setIsIndicator(true);
         }
     }
